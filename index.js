@@ -28,8 +28,8 @@
     thetaLoc = gl.getUniformLocation(program, 'theta'); 
     transLoc = gl.getUniformLocation(program, 'vec');
     sizeLoc = gl.getUniformLocation(program, 'size');
-    size = 0.3;
-    theta = [20, 40, 0];
+    size = 0.4;
+    theta = [30, 60, 0];
     vec = [0, 0, 0];
     xAdder = 0.0081;
     yAdder = 0.0099;
@@ -184,29 +184,27 @@
 
     //Hit the Wall
 
-    if(vec[0] > 0.5*(1-size) || vec[0] < -0.5*(1-size) ){
+    if(vec[0] > 0.8*(1-size) || vec[0] < -0.8*(1-size) ){
       xAdder = xAdder * -1;
     }
     vec[0] += xAdder;
 
-    if(vec[1] > 0.8*(1-size) || vec[1] < -0.8*(1-size) ){
+    if(vec[1] > 0.9*(1-size) || vec[1] < -0.9*(1-size) ){
       yAdder = yAdder * -1;
     }
     vec[1] += yAdder;
 
-    if(vec[2] > 0.5*(1-size) || vec[2] < -0.5*(1-size) ){
+    if(vec[2] > 0.8*(1-size) || vec[2] < -0.8*(1-size) ){
       zAdder = zAdder * -1;
     }
     vec[2] += zAdder;
 
     gl.uniform3fv(transLoc, vec);
 
-    // gl.enableVertexAttribArray(vPosition);
-    // gl.enableVertexAttribArray(vColor);
 
     //Y Rotation
 
-    theta[1] -= ( adder * 3 );
+    theta[1] -= ( adder * 2.5);
 
     gl.uniform3fv(thetaLoc, theta);
   }
@@ -224,8 +222,8 @@
   }
 
   function render() {
-    // Bersihkan layar jadi hitam
-    gl.clearColor(0.0, 0.0, 0.0, 1.0);
+    
+    gl.clearColor(0.22, 0.22, 0.22, 1);
     gl.enable(gl.DEPTH_TEST);
     
     // Bersihkan buffernya canvas
